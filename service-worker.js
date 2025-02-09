@@ -1,11 +1,11 @@
 const CACHE_NAME = "pwa-cache-v1";
 const urlsToCache = [
-    "/",
-    "/index.html",
-    "/styles.css",
-    "/manifest.json",
-    "/service-worker.js",
-    "/billede.png"  // Tilføj billeder, hvis du bruger dem
+    "/min-test/",
+    "/min-test/index.html",
+    "/min-test/styles.css",
+    "/min-test/manifest.json",
+    "/min-test/service-worker.js",
+    "/min-test/billede.png"  // Husk at ændre billednavnet, hvis nødvendigt
 ];
 
 self.addEventListener("install", (event) => {
@@ -20,7 +20,7 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
             return response || fetch(event.request);
-        }).catch(() => caches.match("/index.html"))  // Sørger for at 404 fejl ikke sker
+        }).catch(() => caches.match("/min-test/index.html"))  // Fallback til forsiden
     );
 });
 
