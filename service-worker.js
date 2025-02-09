@@ -5,7 +5,7 @@ const urlsToCache = [
     "/styles.css",
     "/manifest.json",
     "/service-worker.js",
-    "/billede.png"  // Husk at tilføje dine billeder her
+    "/billede.png"  // Tilføj billeder, hvis du bruger dem
 ];
 
 self.addEventListener("install", (event) => {
@@ -20,7 +20,7 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
             return response || fetch(event.request);
-        }).catch(() => caches.match("/index.html"))  // Sørger for at 404 fejlen undgås
+        }).catch(() => caches.match("/index.html"))  // Sørger for at 404 fejl ikke sker
     );
 });
 
